@@ -1,0 +1,207 @@
+/**
+ * =========================================================
+ * PROJECT SHARDS
+ * Item / Inventory / Shop UI Styles
+ * =========================================================
+ */
+
+
+/* =========================================================
+   משבצות ציוד
+========================================================= */
+
+.equipment-slots {
+    display: grid;
+    
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    
+    gap: 8px;
+    
+    margin-top: 10px;
+}
+
+.equipment-slot {
+    display: flex;
+    
+    flex-direction: column;
+    
+    align-items: center;
+    
+    gap: 4px;
+    
+    padding: 12px 8px;
+    
+    border: 1px dashed var(--color-border);
+    
+    border-radius: var(--radius-medium);
+    
+    background: rgba(255, 255, 255, 0.02);
+    
+    text-align: center;
+}
+
+.equipment-slot.filled {
+    border-style: solid;
+    
+    border-color: var(--color-primary);
+    
+    background: rgba(139, 124, 255, 0.08);
+}
+
+.equipment-slot-icon {
+    font-size: 20px;
+}
+
+.equipment-slot-label {
+    font-size: 11px;
+    
+    color: var(--color-text-muted);
+}
+
+.equipment-slot-value {
+    font-size: 12px;
+    
+    color: var(--color-text);
+    
+    font-weight: 600;
+}
+
+.equipment-remove-button {
+    margin-top: 4px;
+    
+    padding: 4px 10px;
+    
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   סיכום סטטים כולל מהציוד
+========================================================= */
+
+.equipment-totals {
+    margin-top: 12px;
+    
+    padding: 10px 12px;
+    
+    border-radius: var(--radius-small);
+    
+    background: rgba(139, 124, 255, 0.08);
+    
+    border: 1px solid rgba(139, 124, 255, 0.2);
+    
+    font-size: 12px;
+    
+    color: var(--color-text);
+    
+    text-align: center;
+}
+
+
+/* =========================================================
+   בורר מיון בתיק
+========================================================= */
+
+.inventory-filter {
+    display: flex;
+    
+    gap: 6px;
+    
+    margin: 10px 0;
+}
+
+.inventory-filter-item {
+    flex: 1;
+    
+    padding: 7px;
+    
+    border: 1px solid var(--color-border);
+    
+    border-radius: var(--radius-small);
+    
+    background: var(--color-background-secondary);
+    
+    color: var(--color-text-secondary);
+    
+    font-size: 12px;
+    
+    cursor: pointer;
+    
+    transition: border-color var(--transition-fast);
+}
+
+.inventory-filter-item:hover {
+    border-color: var(--color-primary);
+}
+
+.inventory-filter-item.selected {
+    border-color: var(--color-primary);
+    
+    color: var(--color-text);
+    
+    background: rgba(139, 124, 255, 0.12);
+}
+
+
+/* =========================================================
+   פתק "מצויד" על חפץ בתיק
+========================================================= */
+
+.item-equipped-note {
+    margin: 4px 0 0;
+    
+    font-size: 11px;
+    
+    font-weight: 600;
+    
+    color: var(--color-primary-light);
+}
+
+
+/* =========================================================
+   כפתור קנייה בחנות
+========================================================= */
+
+.shop-buy-button {
+    width: 100%;
+    
+    margin-top: 6px;
+    
+    font-size: 12px;
+    
+    padding: 8px;
+}
+
+.shake {
+    animation: shake-anim 0.35s ease;
+}
+
+@keyframes shake-anim {
+    
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    
+    25% {
+        transform: translateX(-4px);
+    }
+    
+    75% {
+        transform: translateX(4px);
+    }
+    
+}
+
+
+/* =========================================================
+   מובייל צר — 8 משבצות בטור צר
+========================================================= */
+
+@media (max-width: 380px) {
+    
+    .equipment-slots {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+}
