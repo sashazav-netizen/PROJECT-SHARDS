@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta
+        name="theme-color"
+        content="#0b0d14"
+    >
+
+    <meta
+        name="description"
+        content="PROJECT SHARDS — משחק קלפים RPG בעולם מסתורי של שברי כוח"
+    >
+
+    <title>PROJECT SHARDS</title>
+
+    <link rel="stylesheet" href="css/variables.css">
+
+    <link rel="stylesheet" href="css/base.css">
+
+    <link rel="stylesheet" href="css/hero-ui.css">
+    <link rel="stylesheet" href="css/journey.css">
+    <link rel="stylesheet" href="css/card-ui.css">
+    <link rel="stylesheet" href="css/battle-ui.css">
+    <link rel="stylesheet" href="css/item-ui.css">
+    <link rel="stylesheet" href="css/map-ui.css">
+
+</head>
+
+
+<body>
+
+<div id="app" class="app">
+
+
+    <!-- =====================================================
+         מסך טעינה
+    ====================================================== -->
+
+    <section
+        id="loading-screen"
+        class="screen loading-screen"
+    >
+
+        <div class="loading-content">
+
+            <div class="loading-symbol">
+                ✦
+            </div>
+
+            <h1>
+                PROJECT SHARDS
+            </h1>
+
+            <p>
+                העולם עדיין זוכר את השבר...
+            </p>
+
+            <div class="loading-bar">
+
+                <div id="loading-progress"></div>
+
+            </div>
+
+            <span id="loading-text">
+                מאתחל את העולם...
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         תפריט ראשי
+    ====================================================== -->
+
+    <section
+        id="main-menu"
+        class="screen main-menu hidden"
+    >
+
+        <div class="menu-background"></div>
+
+        <div class="menu-content">
+
+            <div class="game-logo">
+
+                <span class="logo-symbol">
+                    ✦
+                </span>
+
+                <h1>
+                    PROJECT SHARDS
+                </h1>
+
+                <p>
+                    שברי הכוח
+                </p>
+
+            </div>
+
+
+            <div class="story-intro">
+
+                <p>
+                    משהו בעולם נשבר.
+                </p>
+
+                <p>
+                    והשברים עדיין מחכים למי שימצא אותם.
+                </p>
+
+            </div>
+
+
+            <div class="menu-actions">
+
+                <button
+                    id="start-game-button"
+                    class="primary-button"
+                    type="button"
+                >
+                    התחל את המסע
+                </button>
+
+
+                <button
+                    id="continue-game-button"
+                    class="secondary-button hidden"
+                    type="button"
+                >
+                    המשך משחק
+                </button>
+
+            </div>
+
+
+            <div class="version-info">
+                גרסת פיתוח 0.2.0
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         מסך המשחק
+    ====================================================== -->
+
+    <main
+        id="game-screen"
+        class="screen game-screen hidden"
+    >
+
+        <header class="game-header">
+
+            <div class="player-summary">
+
+                <button
+                    type="button"
+                    id="player-avatar-button"
+                    class="player-avatar"
+                >
+                    ?
+                </button>
+
+                <div class="player-info">
+
+                    <strong id="player-name">
+                        נוסע
+                    </strong>
+
+                    <span>
+                        רמה
+                        <b id="player-level">1</b>
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="resources">
+
+                <div class="resource">
+
+                    <span>🪙</span>
+
+                    <strong id="player-money">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div
+                    class="resource hidden"
+                    title="שמור למערכת שדרוג עתידית"
+                >
+
+                    <span>🟡</span>
+
+                    <strong id="player-gold">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="resource">
+
+                    <span>💎</span>
+
+                    <strong id="player-diamonds">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             מסך בית / משחק
+        ================================================== -->
+
+        <section
+            id="home-screen"
+            class="game-content"
+        >
+
+            <div class="home-greeting">
+
+                <span class="home-greeting-icon">
+                    ✦
+                </span>
+
+                <p id="game-message">
+                    בחר את הגיבורים שלך והכן את הקבוצה הראשונה.
+                </p>
+
+            </div>
+
+
+            <!-- =========================================
+                 מסע
+            ========================================== -->
+
+            <div class="journey-card">
+
+                <span class="journey-card-icon">
+                    🧭
+                </span>
+
+                <h2 class="journey-card-title">
+                    צא למסע
+                </h2>
+
+                <p class="journey-card-subtitle">
+                    כל מסע חושף אירוע חדש בעולם השברים — משאבים,
+                    סיפורים, ולפעמים גיבור שלא פגשת עדיין.
+                </p>
+
+                <button
+                    id="journey-button"
+                    type="button"
+                    class="primary-button"
+                >
+                    צא למסע
+                </button>
+
+                <p
+                    id="journey-counter"
+                    class="journey-counter"
+                >
+                    מסעות שהושלמו: 0
+                </p>
+
+                <div
+                    id="journey-result"
+                    class="journey-result hidden"
+                ></div>
+
+            </div>
+
+
+            <!-- =========================================
+                 אתגרי קרב
+            ========================================== -->
+
+            <div class="battle-challenge-card">
+
+                <span class="journey-card-icon">
+                    ⚔️
+                </span>
+
+                <h2 class="journey-card-title">
+                    אתגרי קרב
+                </h2>
+
+                <p class="journey-card-subtitle">
+                    בחר יריב וצא לקרב עם הגיבור הנבחר שלך.
+                </p>
+
+                <div
+                    id="enemy-select-list"
+                    class="enemy-select-list"
+                ></div>
+
+            </div>
+
+
+            <!-- =========================================
+                 כלי מפתח (זמני, עד שיהיה Battle Engine מלא)
+            ========================================== -->
+
+            <details class="debug-panel">
+
+                <summary>
+                    כלי בדיקה למפתח
+                </summary>
+
+                <button
+                    id="test-core-button"
+                    class="secondary-button"
+                    type="button"
+                >
+                    בדוק את ליבת המשחק
+                </button>
+
+            </details>
+
+        </section>
+
+
+        <!-- =================================================
+             מסך קרב
+        ================================================== -->
+
+        <section
+            id="battle-screen"
+            class="screen battle-screen hidden"
+        >
+
+            <div class="battle-container">
+
+                <!-- ===== אויב ===== -->
+
+                <div class="battle-enemy-panel">
+
+                    <h3
+                        id="battle-enemy-name"
+                        class="battle-enemy-name"
+                    ></h3>
+
+                    <div class="battle-hp-bar">
+                        <span
+                            id="battle-enemy-hp-fill"
+                            class="battle-hp-fill enemy"
+                        ></span>
+                    </div>
+
+                    <p
+                        id="battle-enemy-hp-text"
+                        class="battle-hp-text"
+                    ></p>
+
+                </div>
+
+
+                <!-- ===== לוג קרב ===== -->
+
+                <div
+                    id="battle-log"
+                    class="battle-log"
+                ></div>
+
+
+                <!-- ===== גיבור ===== -->
+
+                <div class="battle-hero-panel">
+
+                    <h3
+                        id="battle-hero-name"
+                        class="battle-hero-name"
+                    ></h3>
+
+                    <div class="battle-hp-bar">
+                        <span
+                            id="battle-hero-hp-fill"
+                            class="battle-hp-fill hero"
+                        ></span>
+                    </div>
+
+                    <p
+                        id="battle-hero-hp-text"
+                        class="battle-hp-text"
+                    ></p>
+
+                    <p
+                        id="battle-hero-energy-text"
+                        class="battle-energy-text"
+                    ></p>
+
+                </div>
+
+
+                <!-- ===== יד קלפים ===== -->
+
+                <div
+                    id="battle-hand"
+                    class="battle-hand"
+                ></div>
+
+
+                <!-- ===== פעולות ===== -->
+
+                <div class="battle-actions">
+
+                    <button
+                        id="battle-end-turn-button"
+                        type="button"
+                        class="secondary-button"
+                    >
+                        סיים תור
+                    </button>
+
+                </div>
+
+
+                <!-- ===== תוצאת קרב ===== -->
+
+                <div
+                    id="battle-result-overlay"
+                    class="battle-result-overlay hidden"
+                >
+
+                    <div class="battle-result-box">
+
+                        <h2
+                            id="battle-result-title"
+                            class="battle-result-title"
+                        ></h2>
+
+                        <p
+                            id="battle-result-details"
+                            class="battle-result-details"
+                        ></p>
+
+                        <button
+                            id="battle-leave-button"
+                            type="button"
+                            class="primary-button"
+                        >
+                            חזרה למסע
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             מסך גיבורים
+        ================================================== -->
+
+        <section
+            id="heroes-screen"
+            class="screen heroes-screen hidden"
+        >
+
+            <div class="heroes-container">
+
+
+                <header class="heroes-header">
+
+                    <h1>
+                        הגיבורים שלי
+                    </h1>
+
+                    <p>
+                        בנה את הקבוצה שלך והכן אותה למסע.
+                    </p>
+
+                </header>
+
+
+                <!-- =========================================
+                     קבוצה
+                ========================================== -->
+
+                <section class="team-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            הקבוצה שלי
+                        </h2>
+
+                        <span
+                            id="team-counter"
+                            class="team-counter"
+                        >
+                            0/3
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="heroes-team"
+                        class="heroes-team"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     אוסף
+                ========================================== -->
+
+                <section class="heroes-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            אוסף גיבורים
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        id="heroes-collection"
+                        class="heroes-collection"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     פרטי גיבור
+                ========================================== -->
+
+                <section
+                    id="selected-hero-details"
+                    class="selected-hero-details"
+                ></section>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             מסך קלפים
+        ================================================== -->
+
+        <section
+            id="cards-screen"
+            class="screen cards-screen hidden"
+        >
+
+            <div class="cards-container">
+
+
+                <header class="cards-header">
+
+                    <h1>
+                        הקלפים שלי
+                    </h1>
+
+                    <p>
+                        חפיסת 30 הקלפים שלך, וכל סוגי הקלפים שפתחת.
+                    </p>
+
+                </header>
+
+
+                <!-- =========================================
+                     בחירת גיבור לצפייה בחפיסה שלו
+                ========================================== -->
+
+                <section class="hero-deck-selector-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            חפיסת מי להציג?
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="hero-deck-selector"
+                        class="hero-deck-selector"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     סיכום חפיסה
+                ========================================== -->
+
+                <section class="deck-summary-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2
+                            id="deck-summary-title"
+                        >
+                            החפיסה שלי
+                        </h2>
+
+                        <span
+                            id="deck-counter"
+                            class="team-counter"
+                        >
+                            0/30
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="deck-summary"
+                        class="deck-summary"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     אוסף קלפים
+                ========================================== -->
+
+                <section class="cards-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            אוסף קלפים
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="cards-collection"
+                        class="cards-collection"
+                    ></div>
+
+                </section>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             מסך תיק
+        ================================================== -->
+
+        <section
+            id="inventory-screen"
+            class="screen cards-screen hidden"
+        >
+
+            <div class="cards-container">
+
+                <header class="cards-header">
+
+                    <h1>
+                        התיק שלי
+                    </h1>
+
+                    <p>
+                        כל החפצים שברשותך. אפשר לצייד, להסיר, או למכור.
+                    </p>
+
+                </header>
+
+
+                <!-- =========================================
+                     בחירת גיבור לציוד
+                ========================================== -->
+
+                <section class="hero-deck-selector-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            ציוד עבור מי?
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="inventory-hero-selector"
+                        class="hero-deck-selector"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     משבצות ציוד
+                ========================================== -->
+
+                <section class="deck-summary-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2
+                            id="equipment-title"
+                        >
+                            ציוד מצויד
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="equipment-slots"
+                        class="equipment-slots"
+                    ></div>
+
+                    <div
+                        id="equipment-totals"
+                        class="equipment-totals"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     חפצים בתיק
+                ========================================== -->
+
+                <section class="cards-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            חפצים בתיק
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="inventory-filter"
+                        class="inventory-filter"
+                    ></div>
+
+                    <div
+                        id="inventory-items"
+                        class="cards-collection"
+                    ></div>
+
+                </section>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             מסך חנות
+        ================================================== -->
+
+        <section
+            id="shop-screen"
+            class="screen cards-screen hidden"
+        >
+
+            <div class="cards-container">
+
+                <header class="cards-header">
+
+                    <h1>
+                        חנות
+                    </h1>
+
+                    <p>
+                        חפצים לקנייה בכסף וביהלומים.
+                    </p>
+
+                </header>
+
+
+                <section class="cards-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            מלאי החנות
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="shop-items"
+                        class="cards-collection"
+                    ></div>
+
+                </section>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             מסך מפת עולם
+        ================================================== -->
+
+        <section
+            id="map-screen"
+            class="screen cards-screen hidden"
+        >
+
+            <div class="cards-container">
+
+                <header class="cards-header">
+
+                    <h1>
+                        מפת העולם
+                    </h1>
+
+                    <p>
+                        התקדם דרך נקודות המפה — קרבות, מסעות,
+                        חנות מיוחדת, ובוסים.
+                    </p>
+
+                </header>
+
+
+                <!-- =========================================
+                     בחירת גיבור למפה
+                ========================================== -->
+
+                <section class="hero-deck-selector-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            נלחם עם מי?
+                        </h2>
+
+                    </div>
+
+                    <div
+                        id="map-hero-selector"
+                        class="hero-deck-selector"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     נקודה נוכחית
+                ========================================== -->
+
+                <section class="journey-card">
+
+                    <span
+                        id="map-node-icon"
+                        class="journey-card-icon"
+                    ></span>
+
+                    <h2
+                        id="map-node-title"
+                        class="journey-card-title"
+                    ></h2>
+
+                    <p
+                        id="map-node-description"
+                        class="journey-card-subtitle"
+                    ></p>
+
+                    <div
+                        id="map-node-actions"
+                        class="map-node-actions"
+                    ></div>
+
+                    <div
+                        id="map-fallen-panel"
+                        class="map-fallen-panel hidden"
+                    ></div>
+
+                    <div
+                        id="map-node-result"
+                        class="journey-result hidden"
+                    ></div>
+
+                </section>
+
+
+                <!-- =========================================
+                     שביל המפה
+                ========================================== -->
+
+                <section class="cards-panel">
+
+                    <div class="team-panel-header">
+
+                        <h2>
+                            השביל
+                        </h2>
+                    </div>
+
+                    <div
+                        id="map-trail"
+                        class="map-trail"
+                    ></div>
+
+                </section>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ניווט תחתון
+        ================================================== -->
+
+        <nav class="bottom-navigation">
+
+
+            <button
+                id="nav-world"
+                type="button"
+                data-screen="home-screen"
+            >
+                🏠
+                <span>
+                    בית
+                </span>
+            </button>
+
+
+            <button
+                id="nav-map"
+                type="button"
+                data-screen="map-screen"
+            >
+                🗺️
+                <span>
+                    מפה
+                </span>
+            </button>
+
+
+            <button
+                id="nav-cards"
+                type="button"
+                data-screen="cards-screen"
+            >
+                🃏
+                <span>
+                    קלפים
+                </span>
+            </button>
+
+
+            <button
+                id="nav-heroes"
+                type="button"
+                data-screen="heroes-screen"
+            >
+                🦸
+                <span>
+                    גיבורים
+                </span>
+            </button>
+
+
+            <button
+                id="nav-inventory"
+                type="button"
+                data-screen="inventory-screen"
+            >
+                🎒
+                <span>
+                    תיק
+                </span>
+            </button>
+
+
+            <button
+                id="nav-shop"
+                type="button"
+                data-screen="shop-screen"
+            >
+                🏪
+                <span>
+                    חנות
+                </span>
+            </button>
+
+
+        </nav>
+
+    </main>
+
+
+    <!-- =====================================================
+         מודל: אישור כללי (קנייה/מכירה/פעולות הרסניות)
+    ====================================================== -->
+
+    <div
+        id="confirm-modal"
+        class="modal-overlay hidden"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-box"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="confirm-modal-title"
+        >
+
+            <span class="modal-symbol">
+                ❔
+            </span>
+
+            <h2
+                id="confirm-modal-title"
+            ></h2>
+
+            <p
+                id="confirm-modal-message"
+                class="modal-subtitle"
+            ></p>
+
+            <div class="modal-actions">
+
+                <button
+                    id="confirm-modal-no"
+                    type="button"
+                    class="secondary-button"
+                >
+                    ביטול
+                </button>
+
+                <button
+                    id="confirm-modal-yes"
+                    type="button"
+                    class="primary-button"
+                >
+                    אישור
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         מודל: מידע שחקן
+    ====================================================== -->
+
+    <div
+        id="player-info-modal"
+        class="modal-overlay hidden"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-box"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="player-info-modal-title"
+        >
+
+            <span class="modal-symbol">
+                ✦
+            </span>
+
+            <h2
+                id="player-info-modal-title"
+            >
+                פרופיל שחקן
+            </h2>
+
+            <div
+                id="player-info-content"
+                class="player-info-content"
+            ></div>
+
+            <div class="modal-actions">
+
+                <button
+                    id="player-info-close"
+                    type="button"
+                    class="primary-button"
+                >
+                    סגור
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         מודל: בחירת שם שחקן
+         (מחליף prompt() דפדפן שלא מתאים לעיצוב המשחק)
+    ====================================================== -->
+
+    <div
+        id="name-modal"
+        class="modal-overlay hidden"
+        aria-hidden="true"
+    >
+
+        <div
+            class="modal-box"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="name-modal-title"
+        >
+
+            <span class="modal-symbol">
+                ✦
+            </span>
+
+            <h2 id="name-modal-title">
+                איך נקרא לך?
+            </h2>
+
+            <p class="modal-subtitle">
+                השם הזה ילווה אותך לאורך כל המסע בעולם השברים.
+            </p>
+
+            <input
+                id="name-modal-input"
+                type="text"
+                class="modal-input"
+                placeholder="שם השחקן שלך"
+                maxlength="20"
+                autocomplete="off"
+            >
+
+            <p
+                id="name-modal-error"
+                class="modal-error hidden"
+            ></p>
+
+            <div class="modal-actions">
+
+                <button
+                    id="name-modal-cancel"
+                    type="button"
+                    class="secondary-button"
+                >
+                    ביטול
+                </button>
+
+                <button
+                    id="name-modal-confirm"
+                    type="button"
+                    class="primary-button"
+                >
+                    התחל את המסע
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JavaScript
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="js/core/game.js"
+    ></script>
+
+</div>
+
+</body>
+
+</html>
