@@ -1,0 +1,176 @@
+/**
+ * =========================================================
+ * PROJECT SHARDS
+ * Journey UI Styles
+ * =========================================================
+ */
+
+
+/* =========================================================
+   כרטיס מסע
+========================================================= */
+
+.journey-card {
+    width: min(520px, 100%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 28px 22px;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-medium);
+
+    text-align: center;
+}
+
+.journey-card-icon {
+    font-size: 32px;
+}
+
+.journey-card-title {
+    font-size: 20px;
+
+    margin: 0;
+
+    color: var(--color-text);
+}
+
+.journey-card-subtitle {
+    font-size: 13px;
+
+    color: var(--color-text-secondary);
+
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+.journey-counter {
+    font-size: 12px;
+
+    color: var(--color-text-muted);
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   תוצאת מסע (Reveal)
+========================================================= */
+
+.journey-result {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 10px;
+
+    padding: 16px;
+
+    background: var(--color-background-secondary);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-medium);
+
+    animation: journey-reveal var(--transition-normal) ease;
+}
+
+.journey-result-special {
+    border-color: var(--color-primary);
+
+    box-shadow: 0 0 0 1px var(--color-primary-light) inset;
+}
+
+.journey-result-icon {
+    font-size: 28px;
+}
+
+.journey-result-title {
+    font-size: 16px;
+
+    color: var(--color-text);
+
+    margin: 0;
+}
+
+.journey-result-text {
+    font-size: 13px;
+
+    color: var(--color-text-secondary);
+
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+.journey-result-reward {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: var(--color-primary-light);
+
+    margin: 4px 0 0;
+
+    white-space: pre-line;
+}
+
+@keyframes journey-reveal {
+
+    from {
+        transform: translateY(6px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   פאנל כלי מפתח
+========================================================= */
+
+.debug-panel {
+    width: min(520px, 100%);
+
+    margin-top: 4px;
+
+    padding: 10px 14px;
+
+    border: 1px dashed var(--color-border);
+
+    border-radius: var(--radius-medium);
+
+    color: var(--color-text-muted);
+}
+
+.debug-panel summary {
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+.debug-panel .secondary-button {
+    margin-top: 10px;
+}

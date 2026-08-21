@@ -1,0 +1,297 @@
+/**
+ * =========================================================
+ * PROJECT SHARDS
+ * Card UI Styles
+ * =========================================================
+ */
+
+
+/* =========================================================
+   מסך
+========================================================= */
+
+.cards-screen {
+    overflow-y: auto;
+}
+
+
+/* =========================================================
+   מסגרת מסך
+========================================================= */
+
+.cards-container {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    padding: 20px 16px 100px;
+}
+
+.cards-header h1 {
+    font-size: 22px;
+
+    color: var(--color-text);
+
+    margin: 0 0 4px;
+}
+
+.cards-header p {
+    font-size: 13px;
+
+    color: var(--color-text-secondary);
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   פאנל סיכום חפיסה
+========================================================= */
+
+.deck-summary-panel {
+    padding: 14px;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-large);
+
+    background: var(--color-surface);
+}
+
+.deck-summary {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-top: 10px;
+}
+
+.deck-summary-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 6px 8px;
+
+    border-radius: var(--radius-small);
+
+    background: rgba(255, 255, 255, 0.03);
+
+    font-size: 13px;
+}
+
+.deck-summary-row.class-specific {
+    background: rgba(139, 124, 255, 0.08);
+
+    border: 1px solid rgba(139, 124, 255, 0.25);
+}
+
+.deck-summary-icon {
+    font-size: 15px;
+}
+
+.deck-summary-name {
+    flex: 1;
+
+    color: var(--color-text);
+}
+
+.deck-summary-count {
+    color: var(--color-text-muted);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   אוסף קלפים
+========================================================= */
+
+.cards-panel {
+    padding: 14px;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-large);
+
+    background: var(--color-surface);
+}
+
+.cards-collection {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   Card Tile
+========================================================= */
+
+.card-tile {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+    padding: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: var(--radius-medium);
+
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.card-tile-top {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.card-tile-icon {
+    font-size: 20px;
+}
+
+.card-tile-cost {
+    font-size: 12px;
+
+    padding: 2px 8px;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    color: var(--color-text-secondary);
+}
+
+.card-tile-name {
+    font-size: 14px;
+
+    color: var(--color-text);
+
+    margin: 0;
+}
+
+.card-tile-type {
+    font-size: 11px;
+
+    color: var(--color-text-muted);
+}
+
+.card-tile-description {
+    font-size: 12px;
+
+    color: var(--color-text-secondary);
+
+    line-height: 1.5;
+
+    margin: 0;
+
+    flex: 1;
+}
+
+.card-tile-effects {
+    font-size: 12px;
+
+    color: var(--color-primary-light);
+}
+
+
+/* =========================================================
+   בורר גיבור לחפיסה
+========================================================= */
+
+.hero-deck-selector-panel {
+    padding: 14px;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-large);
+
+    background: var(--color-surface);
+}
+
+.hero-deck-selector {
+    display: flex;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    padding-bottom: 2px;
+}
+
+.hero-deck-selector-item {
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 14px;
+
+    border: 1px solid var(--color-border);
+
+    border-radius: 999px;
+
+    background: var(--color-background-secondary);
+
+    color: var(--color-text-secondary);
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.hero-deck-selector-item:hover {
+    border-color: var(--color-primary);
+}
+
+.hero-deck-selector-item.selected {
+    border-color: var(--color-primary);
+
+    color: var(--color-text);
+
+    background: rgba(139, 124, 255, 0.12);
+}
+
+.hero-deck-selector-icon {
+    font-size: 15px;
+}
+
+.hero-deck-selector-name {
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   מובייל צר
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .cards-collection {
+        grid-template-columns: 1fr;
+    }
+
+}

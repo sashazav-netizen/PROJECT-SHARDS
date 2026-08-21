@@ -1,0 +1,84 @@
+:root {
+
+    /* =====================================================
+       צבעי בסיס
+    ====================================================== */
+
+    --color-background: #080a10;
+    --color-background-secondary: #0e111a;
+    --color-surface: #141824;
+    --color-surface-light: #1b2030;
+
+    --color-border: rgba(255, 255, 255, 0.08);
+
+    --color-text: #f4f5f8;
+    --color-text-secondary: #9ca3b5;
+    --color-text-muted: #686f82;
+
+
+    /* =====================================================
+       צבעי הדגשה
+    ====================================================== */
+
+    --color-primary: #8b5cf6;
+    --color-primary-light: #a78bfa;
+    --color-primary-dark: #6d28d9;
+
+    --color-gold: #f5c451;
+    --color-money: #d9a441;
+    --color-diamond: #67d9ff;
+
+    --color-success: #4ade80;
+    --color-danger: #f87171;
+    --color-warning: #facc15;
+
+
+    /* =====================================================
+       Rarity
+    ====================================================== */
+
+    --rarity-common: #9ca3af;
+    --rarity-uncommon: #4ade80;
+    --rarity-rare: #60a5fa;
+    --rarity-epic: #c084fc;
+    --rarity-legendary: #fbbf24;
+    --rarity-mythic: #fb7185;
+
+
+    /* =====================================================
+       UI
+    ====================================================== */
+
+    --radius-small: 8px;
+    --radius-medium: 14px;
+    --radius-large: 22px;
+
+    --shadow-small:
+        0 4px 15px rgba(0, 0, 0, 0.25);
+
+    --shadow-medium:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    --shadow-large:
+        0 20px 60px rgba(0, 0, 0, 0.45);
+
+
+    /* =====================================================
+       אנימציות
+    ====================================================== */
+
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    --transition-slow: 450ms ease;
+
+
+    /* =====================================================
+       שכבות
+    ====================================================== */
+
+    --z-background: 0;
+    --z-content: 10;
+    --z-header: 50;
+    --z-navigation: 100;
+    --z-modal: 1000;
+}
